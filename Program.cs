@@ -28,7 +28,7 @@ WHERE OPGA.Id = permianId
 
 ";
 
-			var sqlssCompiler = new SqlSSCompiler();
+			var sqlssCompiler = new Sqless.Compiler.SqlessCompiler();
 
 			var result = sqlssCompiler.Compile(source);
 

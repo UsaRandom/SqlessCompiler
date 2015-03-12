@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sqless.Compiler.Lexer;
 
-namespace Sqless.Compiler.PreProcessors
+namespace Sqless.Compiler.Parser
 {
-interface IPreProcessor
+interface ISymbolTable
 {
-	string PreProcess(string source);
+	void RegisterSymbol(string identifier);
+
+	
 }
 }

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Sqless.Compiler.Lexer;
 
-namespace Sqless.Compiler.PreProcessors
+namespace Sqless.Compiler.Parser
 {
-interface IPreProcessor
+interface IParser
 {
-	string PreProcess(string source);
+	IList<ISqlBatchParseTree> Parse(IEnumerable<IToken> tokens);
 }
 }

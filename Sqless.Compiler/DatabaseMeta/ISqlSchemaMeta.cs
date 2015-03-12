@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sqless.Compiler.Lexer;
 
-namespace Sqless.Compiler.PreProcessors
+namespace Sqless.Compiler.DatabaseMeta
 {
-interface IPreProcessor
+interface ISqlSchemaMeta
 {
-	string PreProcess(string source);
+	string Name { get; }
+
+	IList<ISqlTableMeta> Tables { get; }
+ 
 }
 }

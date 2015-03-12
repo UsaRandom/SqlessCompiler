@@ -1,5 +1,0 @@
-C:\Users\mstauber\Desktop\Sqless\SqlessCompiler\Sqless.Compiler\bin\Debug\Sqless.Compiler.dll
-C:\Users\mstauber\Desktop\Sqless\SqlessCompiler\Sqless.Compiler\bin\Debug\Sqless.Compiler.pdb
-C:\Users\mstauber\Desktop\Sqless\SqlessCompiler\Sqless.Compiler\obj\Debug\Sqless.Compiler.dll
-C:\Users\mstauber\Desktop\Sqless\SqlessCompiler\Sqless.Compiler\obj\Debug\Sqless.Compiler.pdb
-C:\Users\mstauber\Desktop\Sqless\SqlessCompiler\Sqless.Compiler\obj\Debug\Sqless.Compiler.csprojResolveAssemblyReference.cache

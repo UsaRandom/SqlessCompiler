@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sqless.Compiler.DatabaseMeta.Types.Exact
+{
+abstract class ExactSqlDataType : SqlDataType
+{
+	protected ExactSqlDataType(bool isNullable)
+		: base(isNullable)
+	{
+
+	}
+
+
+	
+
+}
+}
