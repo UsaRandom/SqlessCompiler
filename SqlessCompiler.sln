@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sqless", "Sqless.csproj", "{DE2CADE3-8D1F-4975-B166-AD11212E3DD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sqless.Compiler", "Sqless.Compiler\Sqless.Compiler.csproj", "{78EF4A64-A388-42F6-A010-7EE97D6A2663}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE2CADE3-8D1F-4975-B166-AD11212E3DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE2CADE3-8D1F-4975-B166-AD11212E3DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE2CADE3-8D1F-4975-B166-AD11212E3DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE2CADE3-8D1F-4975-B166-AD11212E3DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78EF4A64-A388-42F6-A010-7EE97D6A2663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78EF4A64-A388-42F6-A010-7EE97D6A2663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78EF4A64-A388-42F6-A010-7EE97D6A2663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78EF4A64-A388-42F6-A010-7EE97D6A2663}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

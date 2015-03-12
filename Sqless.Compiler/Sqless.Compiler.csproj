@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78EF4A64-A388-42F6-A010-7EE97D6A2663}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sqless.Compiler</RootNamespace>
+    <AssemblyName>Sqless.Compiler</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analysis\Lexer\Automata\IState.cs" />
+    <Compile Include="Analysis\Lexer\Automata\State.cs" />
+    <Compile Include="Analysis\Lexer\Automata\StateMachine.cs" />
+    <Compile Include="Analysis\Lexer\ILexer.cs" />
+    <Compile Include="Analysis\Lexer\IToken.cs" />
+    <Compile Include="Analysis\Lexer\Lexer.cs" />
+    <Compile Include="Analysis\Lexer\LexerDefinition.cs" />
+    <Compile Include="Analysis\Lexer\LexerGravityWellMatrix.cs" />
+    <Compile Include="Analysis\Lexer\Token.cs" />
+    <Compile Include="Analysis\Lexer\TokenType.cs" />
+    <Compile Include="Analysis\Parser\AbstractSyntaxTree.cs" />
+    <Compile Include="Analysis\Parser\Nodes\IAstNode.cs" />
+    <Compile Include="Analysis\Parser\IParser.cs" />
+    <Compile Include="Analysis\Parser\Nodes\SelectQueryNode.cs" />
+    <Compile Include="GlobalScriptCache\SqlServerGlobalScriptCache.cs" />
+    <Compile Include="SqlSSCompiler.cs" />
+    <Compile Include="DatabaseMeta\IDatabase.cs" />
+    <Compile Include="DatabaseMeta\IParameter.cs" />
+    <Compile Include="DatabaseMeta\IScalarFunction.cs" />
+    <Compile Include="DatabaseMeta\IStoredProcedure.cs" />
+    <Compile Include="DatabaseMeta\ITable.cs" />
+    <Compile Include="DatabaseMeta\ITableFunction.cs" />
+    <Compile Include="DatabaseMeta\IView.cs" />
+    <Compile Include="GlobalScriptCache\IGlobalScriptCache.cs" />
+    <Compile Include="Log\CompilerLog.cs" />
+    <Compile Include="Log\ICompilerLog.cs" />
+    <Compile Include="Log\Messages\ICompilerMessage.cs" />
+    <Compile Include="Log\IMessageObserver.cs" />
+    <Compile Include="Log\Messages\Info\InfoStringCompilerMessage.cs" />
+    <Compile Include="Log\Messages\Verbose\VerboseStringCompilerMessage.cs" />
+    <Compile Include="Log\StandardCompilerObserver.cs" />
+    <Compile Include="Log\VerboseCompilerObserver.cs" />
+    <Compile Include="PreProcessors\ImportPreProcessor.cs" />
+    <Compile Include="PreProcessors\IPreProcessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Symbol\ISymbolTable.cs" />
+    <Compile Include="Symbol\IDatabaseScope.cs" />
+    <Compile Include="Symbol\IScriptBlock.cs" />
+    <Compile Include="Symbol\SymbolTable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Analysis\Semantic\" />
+    <Folder Include="Log\Messages\Error\" />
+    <Folder Include="Log\Messages\Warning\" />
+    <Folder Include="Synthesis\Generation\" />
+    <Folder Include="Synthesis\Intermediate\" />
+    <Folder Include="Synthesis\Optimization\" />
+    <Folder Include="Types\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
