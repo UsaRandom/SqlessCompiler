@@ -59,6 +59,11 @@
     <Compile Include="Lexer\Automata\StateMachine.cs" />
     <Compile Include="Lexer\ILexer.cs" />
     <Compile Include="Lexer\IToken.cs" />
+    <Compile Include="Lexer\LexerLibrary\ILexerLibrary.cs" />
+    <Compile Include="Lexer\LexerLibrary\SqlessLexerLibrary.cs" />
+    <Compile Include="Lexer\LexerLibrary\TSqlLexerLibrary.cs" />
+    <Compile Include="Lexer\LexerLibrary\TSql\TSqlAnalyticFunctionsLexerLibrary.cs" />
+    <Compile Include="Lexer\LexerLibrary\TSql\TSqlAggregateFunctionsLexerLibrary.cs" />
     <Compile Include="Lexer\SqlessLexer.cs" />
     <Compile Include="Lexer\LexerDefinition.cs" />
     <Compile Include="Lexer\LexerGravityWellMatrix.cs" />
@@ -67,6 +72,8 @@
     <Compile Include="GlobalScriptCache\SqlServerGlobalScriptCache.cs" />
     <Compile Include="Parser\IParser.cs" />
     <Compile Include="Parser\SqlessParser.cs" />
+    <Compile Include="Parser\SyntaxTree\Variable\AssignParseNode.cs" />
+    <Compile Include="Parser\SyntaxTree\Variable\DeclareParseNode.cs" />
     <Compile Include="Parser\SyntaxTree\IParseNode.cs" />
     <Compile Include="Parser\SyntaxTree\ISqlBatchParseTree.cs" />
     <Compile Include="Parser\SyntaxTree\SqlBatchParseTree.cs" />
@@ -96,6 +103,7 @@
     <Folder Include="DatabaseMeta\Types\Other\" />
     <Folder Include="DatabaseMeta\Types\Spatial\" />
     <Folder Include="Format\" />
+    <Folder Include="Lexer\LexerLibrary\Sqless\" />
     <Folder Include="Log\Messages\Error\" />
     <Folder Include="Log\Messages\Warning\" />
     <Folder Include="Parser\SyntaxTree\Expressions\" />

@@ -1,0 +1,183 @@
+var 
+
+?.
+
+
+//import scripts
+
+//easy variable declaration and use
+//easier sp_ functions
+//temp table 'using'
+
+//null comparison operator 
+//  col1 ?= col2
+//  col1 ?!= col2
+//  checks to see if col1 is null AND col2 is null, along with normal equality.
+// 
+
+//support for //, --, and  /**/ comments
+
+Better 'case' statements
+
+//Nice Casting:
+var index = 0; //assume as an int
+var isValid = false; //bit
+
+//auto caset to varchar
+print("Value of index: " + i);
+
+
+Automatic tables variables
+
+//will automatically asign a name to 'id + 1'
+var tblVar = select *, id + 1 from table;
+
+//index rows, columns
+tblVar[0]
+
+//Local Table, db Aliases
+//Global Table, db Aliases
+
+//Table Alias
+using SEC = dbo.ScenarioExecutionConfiguration;
+
+//DB Alias
+using CrudeFlow = dbo.CrudeFlowPlayground;
+
+
+
+//using(#Table)
+{
+	
+}
+//Allow both " and ', because seriously, who cares...
+
+//Allow any order of select
+
+
+//Allow for && as a replacement for AND,
+//          || as a replacement for OR,
+//           ! as a replacement for NOT
+
+
+
+//better loops: for, foreach, while, do..while
+
+
+foreach(var row in tbl)
+{
+	//perform complex logic... (not for large sets)
+
+	//can say...
+	row.Value = 
+}
+
+//do.. while()
+
+
+
+//properties on 'objects'
+
+var startDate = (select TOP 1 StartDate from dbo.Table1);
+
+startDate.Year
+
+startDate.etc...etc..
+
+
+//Allow for Enumerations....
+
+
+enum ProductionAreas {
+	
+	Permian,
+	EagleFord = 2,
+	Williston = (select id from dbo.productionareas where name like 'williston'),
+
+}
+...
+
+//OR Table Valued Enums.... ?
+
+enum ProductionAreas from dbo.OilGasProductionArea {
+	
+	Name = Name,
+	Value = Id
+
+}
+
+
+//OR Table Valued Enum Trees...?
+
+
+enum ProductionAreas from dbo.OilGasProductionArea {
+	
+	Name = Name,
+	Value = Id,
+	Parent = ParentId2
+}
+
+
+//Tree Hierarchy...
+ProductionAreas.Permian.Permian-TX
+
+
+
+//Allow for temporary functions!
+
+
+function getIdForProductionArea(name) {
+	
+
+};
+
+
+//allow select * without column[s]
+
+
+SELECT * without Geography
+FROM dbo.OilGasProductionArea
+
+
+
+
+DML/DDL/TCL
+
+
+//Auto Joins...
+// Automatically figures out best foreign key based on database structure
+// and naming.
+
+ORIGINAL: (220 char)
+
+	USE Energy
+	GO;
+
+	SELECT *
+	FROM dbo.OilGasProductionArea OGPA
+		INNER JOIN OilGasWellPRoductionArea_OilGasWell OGWPA_OGW
+			ON OGWPA_OGW.OilGasProductionAreaId = OGPA.Id
+		INNER JOIN OilGasWellProduction OGWP
+			ON OGWP.OilGasWellId = OGPA_OGW.OilGasWellId
+
+
+TO: (102 char, no imports)	
+
+	USE Energy
+	GO;
+
+	SELECT *
+	FROM OilGasProductionArea
+		JOIN OilGasProductionArea_OilGasWell
+		JOIN OilGasWellProduction
+
+
+FURTHER: (45 char, with import)
+
+	using Energy;
+
+	SELECT *
+	FROM PRA
+		JOIN PRA_OGW
+		JOIN OGWP
+

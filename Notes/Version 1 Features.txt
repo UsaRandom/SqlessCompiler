@@ -1,0 +1,76 @@
+
+
+var i = 0;
+
+import Script;
+
+//null coalesce
+[val] ?? [val2] ?? [val3]
+
+col1 ?= col2
+col1 ?!= col2
+
+&&
+||
+!
+
+
+//
+--
+/*
+*/
+
+var x = 0;
+var s = "variable x has a value of " + x;
+
+
+using SEC = dbo.ScenarioExecutionConfiguration;
+using OGPA = Energy.dbo.OilGasProductionArea;
+
+
+def #tempTable (
+	Id int,
+	Value string?[140],
+	IsEnabled bool
+);
+
+def #tempTable (
+	Id int,
+	Value string?[140],
+	IsEnabled bool
+) drop existing; //drops if it already exists
+
+def @tableVariable (
+	
+	Id int,
+	Value nstring[140],
+	IsEnabled bool?,
+	BigValue string, //assumes varchar(max)
+	BigNValue nstring, //assumes nvarchar(max)
+	FirstLetter char, //assumes char(1)
+	ValueAsCharArray char[10], //assumes char(10)
+);
+
+
+using(#tempTable)
+{
+	
+	//drops temp table at end
+}
+
+
+while(condition)
+{
+	
+	break/continue;
+}
+
+
+SELECT * WITHOUT(Geography), COUNT(OGW.Id)
+FROM OGPA
+	JOIN OilGasWellPRoductionArea_OilGasWell OGW
+		// auto join on 
+WHERE OGPA.Id = i
+//Auto Group by
+
+

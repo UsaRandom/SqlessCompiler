@@ -1,0 +1,42 @@
+Variable Declaration...
+
+(not case sensitive)
+
+var index = 0; //assumed to be int
+
+
+var index = 0.1; //assumed to be float
+
+var index = 0f; //specified as float
+
+//specify type
+float index = 0; //specified as float
+
+
+
+
+
+Strings:
+
+	-- Declare:
+	var index = 'hi'; //specified as char(2)...
+	var index = n'hi'; //specified as nchar(2)...
+	var index = "hello"; //specified as char(5)...
+	var index = n"hello"; //specified as nchar(5)...
+
+	-- Dynamic Declare:
+	var index = (SELECT [value] FROM Table); //Specified as typeof([value]) (Can be anything really...)
+
+	--- Concat:
+	var hello = n"hello"; //specified as nchar(5)...
+	var world = n"world"; //specified as nchar(5)...
+	var message = hello + " " + world; //specified as nchar(11)...
+	---
+
+
+	var str = "hi";
+
+
+	//Standard String Values
+	str.Contains("hi");
+	str.CONTAINS("hi");

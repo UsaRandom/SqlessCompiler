@@ -1,0 +1,124 @@
+
+IBufferedTokenStream
+	
+	IToken Read();
+
+	IToken Current;
+
+	bool HasTokens();
+
+	IToken Peek(int);
+
+
+//? not sure
+ISqlDataType
+	
+	T Convert<T>(object value) where T : ISqlDataType;
+
+	string Name;
+
+	bool IsNullable;
+
+
+Int32SqlDataType : ISqlDataType
+
+CharSqlDataType : ISqlDataType
+	CharSqlDataType(int length);
+
+
+ISqlColumn<T> where T : ISqlDataType
+
+	string Name;
+
+	IColumn<T> References;
+
+	ICollection<ISqlColumn<T>> ReferencingColumns;
+
+	ISqlDatabase Table;
+
+
+ISqlTable
+	
+	IDatabase Database;
+
+	IDictionary<string, ISqlColumn<ISqlDataType>> Columns;
+
+
+ISqlDatabase
+
+	ICollection<ISqlTable> Tables
+
+
+
+
+
+ISymbol
+
+	string Identifier;
+
+IVariableSymbol : ISymbol
+	
+	string Identifier;
+
+	ISqlDataType SqlDataType;
+
+ITableSymbol : ISymbol
+	
+	string Identifier;
+
+	ISqlTable Table;
+
+IAliasSymbol : ISymbol
+	
+	string Identifier;
+
+	ISymbol AliasedSymbol;
+
+
+
+
+
+
+IBatchSymbolTable
+
+	
+
+IParseTree
+	
+	ICollection<IBatchTree> m_batches;
+
+IBatchNode : 
+
+
+IParseNode
+	
+	IToken Token;
+
+	IParseNode Parent;
+
+	ICollection<IParseNode> Nodes
+
+
+SymbolNode : IParseNode
+	
+	public SymbolNode(IToken symbolToken)
+
+TableNode : IParseNode
+
+	public TableNode(IToken startTableToken, IBufferedTokenStream stream)
+
+
+UsingNode : IParseNode
+	
+	public UsingNode(IToken usingToken, IBufferedTokenStream stream)
+
+ImportNode : IParseNode
+	
+	public ImportNode(IToken importToken, IBufferedTokenStream stream)
+
+
+QueryNode : IParseNode
+	
+	public QueryNode(IBufferedTokenStream stream)
+
+

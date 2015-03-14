@@ -85,39 +85,15 @@ class SqlessLexer : ILexer
 
 		//Lexer Definitions (Order defines priority)
 
-		//TSql Keywords
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Select, "(?i)select"));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.From, "(?i)from"));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Join, "(?i)join"));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Where, "(?i)where"));
+		//TSql
+		lexerDefinitions.AddRange(new TSqlLexerLibrary().LexerDefinitions);
 
-		//SqlSS Keywords
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Using, "(?i)using"));		
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Without, "(?i)without"));		
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Var, "(?i)var"));		
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Import, "(?i)import"));
-
-		//Operators
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Equals, "="));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Asterisk, "\\*"));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Dot, "\\."));
-
-		//Symbol
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Symbol, @"(?i)[a-z_]+"));
-
-		//Scope (kinda...)
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Left_Parenthesis, "\\("));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Right_Parenthesis, "\\)"));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Semicolon, ";"));
-
-		//Literals
-		lexerDefinitions.Add(new LexerDefinition(TokenType.StringLiteral, "'[^']+'"));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.StringLiteral, "\"[^\"]+\""));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.IntegerLiteral, "[0-9]+"));
+		//Sqless
+		lexerDefinitions.AddRange(new SqlessLexerLibrary().LexerDefinitions);
 
 	}
 
-	private static IList<LexerDefinition> lexerDefinitions;
+	private static List<LexerDefinition> lexerDefinitions;
 
 }
 }

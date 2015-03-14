@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sqless.Common.GlobalScriptCache
+namespace Sqless.Compiler.Parser.SyntaxTree
 {
-	interface IGlobalScriptCache
-	{
-	}
+class AssignParseNode
+{
+}
 }
