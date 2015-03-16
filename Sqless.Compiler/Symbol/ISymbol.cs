@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sqless.Compiler.Parser
+namespace Sqless.Compiler.Symbol
 {
-public class SymbolTable
+interface ISymbol
 {
+	string Name { get; }
+
+	SymbolType Type { get; }
 }
 }

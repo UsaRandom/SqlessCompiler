@@ -1,0 +1,73 @@
+﻿(* Sqless Grammar Definition in EBNF *)
+
+letter = "A" | "B" | "C" | "D" | "E" | "F" | "G"
+       | "H" | "I" | "J" | "K" | "L" | "M" | "N"
+       | "O" | "P" | "Q" | "R" | "S" | "T" | "U"
+       | "V" | "W" | "X" | "Y" | "Z" ;
+
+white space = " " | "	";
+
+underscore = "_";
+
+digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+
+(* Need to list out all symbols *)
+symbol = "{";
+
+number = [ "-" ], digit, { digit };
+
+real number = number, ".", digit, { digit };
+
+decimal literal = real number, "d";
+
+float literal = real number | (number, "f");
+
+character = letter | digit | white space;
+
+string literal = "'" , character, { character }, "'" |
+				 """ , character, { character }, """;
+				 
+unicode string literal = "n", string literal;
+
+identifier = { letter | underscore }, { letter | digit | underscore };
+
+operator = "+" | "-" | "*" | "/" | "%";
+
+and = "AND" | "&&";
+or = "OR" | "||";
+not = "!" | "NOT";
+
+binary boolean operator = and | or;
+
+boolean literal = "true" | "false";
+
+left parenthesis = "(";
+left curly = "{";
+
+right parenthesis = ")";
+right curly = "}";
+
+boolean expression = [ not ], (identifier |
+							   boolean literal |
+							   boolean expression),
+							   [ (boolean expression (and | not)
+							    ) ]
+
+expression = expression |
+			 (expression, operator, expression) |
+			 identifier;
+
+
+assignment = identifier, "=", (real number |
+							   float literal |
+							   decimal literal |
+							   string literal |
+							   unicode string literal |
+							   identifier);
+
+while = left parenthesis,
+		boolean expression,
+		right parenthesis,
+		left curly,
+		statement list,
+		right curly;
