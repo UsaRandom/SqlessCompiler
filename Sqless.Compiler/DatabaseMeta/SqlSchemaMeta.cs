@@ -8,14 +8,22 @@ namespace Sqless.Compiler.DatabaseMeta
 {
 class SqlSchemaMeta : ISqlSchemaMeta
 {
+	public SqlSchemaMeta(string name)
+	{
+		Name = name;
+		Tables = new List<ISqlTableMeta>();
+	}
+
 	public string Name
 	{
-		get { throw new NotImplementedException(); }
+		get;
+		private set;
 	}
 
 	public IList<ISqlTableMeta> Tables
 	{
-		get { throw new NotImplementedException(); }
+		get;
+		set;
 	}
 }
 }

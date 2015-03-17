@@ -9,6 +9,14 @@ namespace Sqless.Compiler.DatabaseMeta
 {
 class SqlColumnMeta<T> : ISqlColumnMeta<T> where T : ISqlDataType
 {
+
+	public SqlColumnMeta(string name, T sqlDataType, ISqlTableMeta table)
+	{
+		Name = name;
+		SqlDataType = sqlDataType;
+		TableMeta = table;
+	} 
+
 	public string Name { get; private set; }
 	public T SqlDataType { get; private set; }
 	public ISqlColumnMeta<ISqlDataType> References { get; private set; }

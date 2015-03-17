@@ -28,6 +28,11 @@ abstract class SqlDataType : ISqlDataType
 		get { return m_isNullable; }
 	}
 
+	public int Length
+	{
+		get;
+		set;
+	}
 
 	protected abstract string GetTypeName();
 

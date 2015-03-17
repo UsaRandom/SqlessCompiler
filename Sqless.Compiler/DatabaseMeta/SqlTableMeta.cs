@@ -3,29 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sqless.Compiler.DatabaseMeta.Types;
 
 namespace Sqless.Compiler.DatabaseMeta
 {
 class SqlTableMeta : ISqlTableMeta
 {
+	public SqlTableMeta( ISqlDatabaseMeta database, ISqlSchemaMeta schema, string name)
+	{
+		SchemaMeta = schema;
+		DatabaseMeta = database;
+		Columns = new List<ISqlColumnMeta<ISqlDataType>>();
+
+		schema.Tables.Add(this);
+
+		Name = name;
+	}
+
 	public string Name
 	{
-		get { throw new NotImplementedException(); }
+		get;
+		private set;
 	}
 
 	public ISqlDatabaseMeta DatabaseMeta
 	{
-		get { throw new NotImplementedException(); }
+		get;
+		private set;
 	}
 
 	public ISqlSchemaMeta SchemaMeta
 	{
-		get { throw new NotImplementedException(); }
+		get;
+		private set;
 	}
 
-	public IDictionary<string, ISqlColumnMeta<Types.ISqlDataType>> Columns
+	public IList<ISqlColumnMeta<Types.ISqlDataType>> Columns
 	{
-		get { throw new NotImplementedException(); }
+		get;
+		set;
 	}
 }
 }

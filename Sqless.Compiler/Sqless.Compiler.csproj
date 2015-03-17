@@ -39,18 +39,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\IDatabaseContext.cs" />
+    <Compile Include="DatabaseMeta\IDatabaseContext.cs" />
+    <Compile Include="DatabaseMeta\TSql\TSqlDatabaseContext.cs" />
+    <Compile Include="DatabaseMeta\IRDMSSqlTypeRelationshipMap.cs" />
     <Compile Include="DatabaseMeta\ISqlColumnMeta.cs" />
     <Compile Include="DatabaseMeta\ISqlSchemaMeta.cs" />
     <Compile Include="DatabaseMeta\SqlColumnMeta.cs" />
     <Compile Include="DatabaseMeta\SqlDatabaseMeta.cs" />
     <Compile Include="DatabaseMeta\SqlSchemaMeta.cs" />
     <Compile Include="DatabaseMeta\SqlTableMeta.cs" />
-    <Compile Include="DatabaseMeta\Types\Exact\BitSqlDataType.cs" />
+    <Compile Include="DatabaseMeta\TSql\TSqlRDMSSqlTypeRelationshipMap.cs" />
+    <Compile Include="DatabaseMeta\Types\Character\VarCharSqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\Character\CharSqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\DateAndTime\DateTimeSqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\DateAndTime\TimeSqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\DateAndTime\DateSqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\Exact\Int64SqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\Exact\Int32SqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\Exact\Int8SqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\FloatingPoint\DoubleSqlDataType.cs" />
     <Compile Include="DatabaseMeta\Types\ISqlDataType.cs" />
-    <Compile Include="DatabaseMeta\Types\Exact\ExactSqlDataType.cs" />
-    <Compile Include="DatabaseMeta\Types\Exact\SmallIntSqlDataType.cs" />
-    <Compile Include="DatabaseMeta\Types\Exact\TinyIntSqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\NullableSqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\Exact\Int16SqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\FloatingPoint\FloatSqlDataType.cs" />
+    <Compile Include="DatabaseMeta\Types\Other\UnknownSqlDataType.cs" />
     <Compile Include="DatabaseMeta\Types\SqlDataType.cs" />
     <Compile Include="Lexer\BufferedTokenStream.cs" />
     <Compile Include="Lexer\IBufferedTokenStream.cs" />
@@ -99,10 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DatabaseMeta\Types\Binary\" />
-    <Folder Include="DatabaseMeta\Types\Character\" />
-    <Folder Include="DatabaseMeta\Types\DateAndTime\" />
-    <Folder Include="DatabaseMeta\Types\FloatingPoint\" />
-    <Folder Include="DatabaseMeta\Types\Other\" />
     <Folder Include="DatabaseMeta\Types\Spatial\" />
     <Folder Include="Format\" />
     <Folder Include="Lexer\LexerLibrary\Sqless\" />

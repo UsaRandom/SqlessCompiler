@@ -17,7 +17,7 @@ interface ISqlTableMeta
 
 	ISqlSchemaMeta SchemaMeta { get; }
 
-	IDictionary<string, ISqlColumnMeta<ISqlDataType>> Columns { get; }  
+	IList<ISqlColumnMeta<Types.ISqlDataType>> Columns { get; }
 
 	//Some other object should have this responsibility... should have a concept of 'confidence'
 	//IList<ISqlColumn<ISqlDataType>> GetColumnsToJoinOn(ISqlTable other);  

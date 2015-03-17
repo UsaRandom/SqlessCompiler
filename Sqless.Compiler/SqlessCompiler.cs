@@ -1,4 +1,6 @@
-﻿using Sqless.Compiler.GlobalScriptCache;
+﻿using Sqless.Compiler.DatabaseMeta.Context;
+using Sqless.Compiler.DatabaseMeta;
+using Sqless.Compiler.GlobalScriptCache;
 using Sqless.Compiler.Lexer;
 using Sqless.Compiler.Log;
 using Sqless.Compiler.PreProcessors;
@@ -16,9 +18,24 @@ public class SqlessCompiler
 	public string Compile(string source)
 	{
 		ICompilerLog  log;
-		
+		IDatabaseContext context;
 		ILexer lexer;
 		
+
+		context = new TSqlDatabaseContext("Data Source=SqlServer;Initial Catalog=CrudeFlow;Integrated Security=True;");
+
+		ISqlDatabaseMeta databaseMeta = context.GetDatabaseMeta("CrudeFlow");
+
+
+		foreach(var table in databaseMeta.Tables)
+		{
+			Console.WriteLine(table.Name);
+			foreach(var column in table.Columns)
+			{
+				Console.WriteLine("    " + column.Name + " " + column.SqlDataType.TypeName);
+			}
+		}
+
 		log = new CompilerLog();
 
 		log.AddObserver(new StandardCompilerObserver());

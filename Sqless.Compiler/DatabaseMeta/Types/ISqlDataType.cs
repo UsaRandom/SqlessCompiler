@@ -13,5 +13,7 @@ interface ISqlDataType
 	string TypeName { get; }
 
 	bool IsNullable { get; }
+
+	int Length { get; }
 }
 }

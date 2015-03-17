@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sqless.Compiler.DatabaseMeta.Types.Exact
+namespace Sqless.Compiler.DatabaseMeta.Types
 {
-abstract class ExactSqlDataType : SqlDataType
+abstract class NullableSqlDataType : SqlDataType
 {
-	protected ExactSqlDataType(bool isNullable)
+	protected NullableSqlDataType(bool isNullable)
 		: base(isNullable)
 	{
 

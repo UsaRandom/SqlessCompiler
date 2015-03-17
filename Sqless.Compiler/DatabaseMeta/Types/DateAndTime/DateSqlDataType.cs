@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sqless.Compiler.DatabaseMeta.Types.Exact
+namespace Sqless.Compiler.DatabaseMeta.Types
 {
-class SmallIntSqlDataType : ExactSqlDataType
+class DateSqlDataType : NullableSqlDataType
 {	
 
-	public SmallIntSqlDataType(bool isNullable)
+	public DateSqlDataType(bool isNullable)
 		: base(isNullable)
 	{
 
@@ -20,7 +20,7 @@ class SmallIntSqlDataType : ExactSqlDataType
 		return SQL_TYPE_NAME;
 	}
 
-	private const string SQL_TYPE_NAME = "smallint";
+	private const string SQL_TYPE_NAME = "Date";
 
 }
 }

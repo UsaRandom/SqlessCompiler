@@ -86,7 +86,7 @@ class SqlessLexer : ILexer
 		//Lexer Definitions (Order defines priority)
 
 		//TSql
-		lexerDefinitions.AddRange(new TSqlLexerLibrary().LexerDefinitions);
+	//	lexerDefinitions.AddRange(new TSqlLexerLibrary().LexerDefinitions);
 
 		//Sqless
 		lexerDefinitions.AddRange(new SqlessLexerLibrary().LexerDefinitions);

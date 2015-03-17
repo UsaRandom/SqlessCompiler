@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sqless.Compiler.DatabaseMeta.Types.Exact
+namespace Sqless.Compiler.DatabaseMeta.Types
 {
-class BitSqlDataType : ExactSqlDataType
+class VarCharSqlDataType : NullableSqlDataType
 {	
 
-	public BitSqlDataType(bool isNullable)
+	public VarCharSqlDataType(bool isNullable)
 		: base(isNullable)
 	{
 
@@ -20,7 +20,7 @@ class BitSqlDataType : ExactSqlDataType
 		return SQL_TYPE_NAME;
 	}
 
-	private const string SQL_TYPE_NAME = "bit";
+	private const string SQL_TYPE_NAME = "Varchar";
 
 }
 }

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sqless.Compiler.DatabaseMeta.Types.Exact
+namespace Sqless.Compiler.DatabaseMeta.Types
 {
-class TinyIntSqlDataType : ExactSqlDataType
+class FloatSqlDataType : NullableSqlDataType
 {	
 
-	public TinyIntSqlDataType(bool isNullable)
+	public FloatSqlDataType(bool isNullable)
 		: base(isNullable)
 	{
 
@@ -20,7 +20,7 @@ class TinyIntSqlDataType : ExactSqlDataType
 		return SQL_TYPE_NAME;
 	}
 
-	private const string SQL_TYPE_NAME = "tinyint";
+	private const string SQL_TYPE_NAME = "Float";
 
 }
 }
