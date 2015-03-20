@@ -8,107 +8,118 @@ namespace Sqless.Compiler.Lexer
 {
 public enum TokenType
 {
-	//Sql Keywords
-	//For a full list see https://msdn.microsoft.com/en-us/library/ms189822.aspx
+	
 	Select,
 	From,
 	Where,
-	Null,
-	Go,
-	As,
 	Join,
-	Inner,
-	Outer,
 	Left,
 	Right,
 	Full,
-	On,
 	Order,
 	By,
 
-	//Sql Functions , see https://msdn.microsoft.com/en-us/library/ms174318.aspx
+	Without,
 
-	//Sql Aggregate Functions
-	Avg,
-	Min,
+
 	Sum,
+	Avg,
 	Count,
-	Max,
+
+	Byte,
+	Short,
+	Int,
+	Long,
+	NullableByte,
+	NullableShort,
+	NullableInt,
+	NullableLong,
+	ByteLiteral,
+	ShortLiteral,
+	IntLiteral,
+	LongLiteral,
+
+	Float,
+	Double,
+	NullableFloat,
+	NullableDouble,
+	FloatLiteral,
+	DecimalLiteral,
+
+	Char,
+	NChar,
+	String,
+	NString,
+	NullableChar,
+	NullableNChar,
+	NullableString,
+	NullableNString,
+	CharLiteral,
+	NCharLiteral,
+	StringLiteral,
+	NStringLiteral,
+
+	Date,
+	Time,
+	DateTime,
+	NullableDate,
+	NullableTime,
+	NullableDateTime,
+
 	
+	Bool,
+	NullableBool,
+	BoolLiteral,
 
-	//Sql Types
-	Bit,
-	TinyInt,
-	SmallInt,
-	BigInt,
-	SmallDateTime,
-	Varchar,
-	NVarchar,
-	NText,
 
-	//Shared Keywords
+	Import,
+	Using,
+	
+	Var,
+	
+	Def,
+	TempTable,
+	TableVariable,
+	DropExisting,
+
 	If,
-	Var, //Var is aggregate function in SqlServer, and variable declaration in Sqless
+	Else,
 	While,
 	Break,
 	Continue,
 
-	//Shared Types
-	Int,
-	Float,
-	Char,
-	NChar,
-	Decimal,
-	Date,
-	Text,
-	Time,
-	DateTime,
-	DateTime2,
-	Geography,
-	Geometry,
 	
-	//Sqless Keywords
-	Import,
-	Using,
-	Without,
-	Def,
-
-	//Sqless Types
-	String,
-	Bool,
-	Byte,
-	Short,
-	NullableString,
-	NullableBool,
-	NullableByte,
-	NullableShort,
-	NullableInt,
-	NullableFloat,
-
-
-	//Value Literals
-	StringLiteral,
-	NStringLiteral,
-	IntegerLiteral,
-	FloatLiteral,
-	DecimalLiteral,
-	BoolLiteral,
-	
-
-
+	Null,
+	NullCoalesce,
+	NullEquality,
+	NullNegatedEquality,
 
 	//Symbol, represents tables, named variables, etc...
 	Symbol,
+	Dot,
+	Comma,
 
 	//Operators,
-	Equals,
 	Asterisk,
-	Dot, 
+	Plus,
+	Minus,
+	Divide,
+	
+	Equals,
 
+
+	//Boolean Operators
+	And,
+	Or,
+	Not,
 
 	//Scope
-	Left_Parenthesis,
-	Right_Parenthesis,
+	LeftParenthesis,
+	RightParenthesis,
+	LeftCurlyBracket,
+	RightCurlyBracket,
+	LeftBracket,
+	RightBracket,
 	Semicolon
 }
 }

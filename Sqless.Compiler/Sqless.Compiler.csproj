@@ -73,9 +73,6 @@
     <Compile Include="Lexer\IToken.cs" />
     <Compile Include="Lexer\LexerLibrary\ILexerLibrary.cs" />
     <Compile Include="Lexer\LexerLibrary\SqlessLexerLibrary.cs" />
-    <Compile Include="Lexer\LexerLibrary\TSqlLexerLibrary.cs" />
-    <Compile Include="Lexer\LexerLibrary\TSql\TSqlAnalyticFunctionsLexerLibrary.cs" />
-    <Compile Include="Lexer\LexerLibrary\TSql\TSqlAggregateFunctionsLexerLibrary.cs" />
     <Compile Include="Lexer\SqlessLexer.cs" />
     <Compile Include="Lexer\LexerDefinition.cs" />
     <Compile Include="Lexer\LexerGravityWellMatrix.cs" />

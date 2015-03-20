@@ -69,8 +69,6 @@ while(condition)
 SELECT * WITHOUT(Geography), COUNT(OGW.Id)
 FROM OGPA
 	JOIN OilGasWellPRoductionArea_OilGasWell OGW
-		// auto join on 
-WHERE OGPA.Id = i
-//Auto Group by
+WHERE OGPA.Id == i
 
 
