@@ -105,6 +105,10 @@
     <Compile Include="Symbol\ISymbolTable.cs" />
     <Compile Include="Symbol\SymbolType.cs" />
     <Compile Include="Symbol\SymbolTable.cs" />
+    <Compile Include="Text\ISourceText.cs" />
+    <Compile Include="Text\ITextChange.cs" />
+    <Compile Include="Text\ITextLine.cs" />
+    <Compile Include="Text\ITextSpan.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DatabaseMeta\Types\Binary\" />

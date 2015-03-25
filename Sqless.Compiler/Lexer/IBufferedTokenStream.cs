@@ -9,7 +9,7 @@ namespace Sqless.Compiler.Lexer
 {
 interface IBufferedTokenStream
 {
-	IToken Read();
+	bool Read();
 
 	IToken Current { get; }
 

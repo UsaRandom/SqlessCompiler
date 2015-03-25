@@ -10,12 +10,13 @@ class SqlServerGlobalScriptCache : IGlobalScriptCache
 {
 	public bool ScriptExists(string fullyQualifiedName)
 	{
-		throw new NotImplementedException();
+		return true;
 	}
 
 	public bool TryGetSource(string fullyQualifiedName, out string scriptSource)
 	{
-		throw new NotImplementedException();
+		scriptSource = "using WHATEVER = Test;";
+		return true;
 	}
 
 	public void Register(string fullyQualifiedName, string source, string compiledSql)

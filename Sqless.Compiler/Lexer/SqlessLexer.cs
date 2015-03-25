@@ -63,8 +63,8 @@ class SqlessLexer : ILexer
 			foreach(var validToken in prioritizedTokenResults)
 			{
 				validToken.LineNumber = lineIndex + 1;
-				validToken.SourceIndexStart = currentSourceIndex + validToken.LineColumnStart;
-				validToken.SourceIndexEnd = currentSourceIndex + validToken.LineColumnEnd;
+				validToken.SourceIndexStart = currentSourceIndex + validToken.LineColumnStart + validToken.LineNumber + 1;
+				validToken.SourceIndexEnd = currentSourceIndex + validToken.LineColumnEnd + validToken.LineNumber + 1;
 
 				m_compilerLog.Verbose("Token : " + validToken.Type);
 

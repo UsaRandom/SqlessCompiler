@@ -29,8 +29,6 @@ class ImportPreProcessor : IPreProcessor
 
 	private string ProcessImports(string source)
 	{
-		throw new NotImplementedException("Not Finished implementing");
-
 		/*
 		 * This needs to track which scripts we've imported already, to avoid
 		 * recursive references... aka, shit storm.
@@ -46,16 +44,17 @@ class ImportPreProcessor : IPreProcessor
 		IToken currentToken;
 
 
-		while((currentToken = tokenStream.Read()) != default(IToken))
+		while(tokenStream.Read())
 		{
+			currentToken = tokenStream.Current;
 			if(currentToken.Type == TokenType.Import)
 			{
 				//we found an 'import' token.
-				var expectedEquals = tokenStream.Peek(1);
-				var expectedScriptIdentifier = tokenStream.Peek(2);
+				var expectedScriptIdentifier = tokenStream.Peek(1);
+				var expectedSemicolon = tokenStream.Peek(2);
 
-				if((expectedEquals != default(IToken) && expectedEquals.Type == TokenType.Equals) &&
-					(expectedScriptIdentifier != default(IToken) && expectedScriptIdentifier.Type == TokenType.Symbol))
+				if((expectedScriptIdentifier != default(IToken) && expectedScriptIdentifier.Type == TokenType.Identifier) &&
+					(expectedSemicolon != default(IToken) && expectedSemicolon.Type == TokenType.Semicolon))
 				{
 					//the import token was follwed by an equals and a symbol, we should import a script!
 					string scriptSource;
@@ -64,7 +63,7 @@ class ImportPreProcessor : IPreProcessor
 					{
 
 						//remove the import
-						preProcessedSource.Remove(currentToken.SourceIndexStart, expectedScriptIdentifier.SourceIndexEnd - currentToken.SourceIndexStart);
+						preProcessedSource.Remove(currentToken.SourceIndexStart , expectedSemicolon.SourceIndexEnd - currentToken.SourceIndexStart + 2);
 
 						//add the script (and process imports on that script)
 						preProcessedSource.Insert(currentToken.SourceIndexStart, ProcessImports(scriptSource));

@@ -1,0 +1,8 @@
+C:\Users\mstauber\Desktop\Sqless\GitHub\SqlessCompiler\bin\Debug\SqlessCompiler.exe.config
+C:\Users\mstauber\Desktop\Sqless\GitHub\SqlessCompiler\bin\Debug\SqlessCompiler.exe
+C:\Users\mstauber\Desktop\Sqless\GitHub\SqlessCompiler\bin\Debug\SqlessCompiler.pdb
+C:\Users\mstauber\Desktop\Sqless\GitHub\SqlessCompiler\bin\Debug\Sqless.Compiler.dll
+C:\Users\mstauber\Desktop\Sqless\GitHub\SqlessCompiler\bin\Debug\Sqless.Compiler.pdb
+C:\Users\mstauber\Desktop\Sqless\GitHub\SqlessCompiler\obj\Debug\Sqless.csprojResolveAssemblyReference.cache
+C:\Users\mstauber\Desktop\Sqless\GitHub\SqlessCompiler\obj\Debug\SqlessCompiler.exe
+C:\Users\mstauber\Desktop\Sqless\GitHub\SqlessCompiler\obj\Debug\SqlessCompiler.pdb

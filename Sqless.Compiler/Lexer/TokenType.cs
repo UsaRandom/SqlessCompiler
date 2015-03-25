@@ -12,12 +12,10 @@ public enum TokenType
 	Select,
 	From,
 	Where,
-	Join,
 	Left,
 	Right,
 	Full,
 	Order,
-	By,
 
 	Without,
 
@@ -44,7 +42,7 @@ public enum TokenType
 	NullableFloat,
 	NullableDouble,
 	FloatLiteral,
-	DecimalLiteral,
+	DoubleLiteral,
 
 	Char,
 	NChar,
@@ -95,7 +93,7 @@ public enum TokenType
 	NullNegatedEquality,
 
 	//Symbol, represents tables, named variables, etc...
-	Symbol,
+	Identifier,
 	Dot,
 	Comma,
 
@@ -120,6 +118,7 @@ public enum TokenType
 	RightCurlyBracket,
 	LeftBracket,
 	RightBracket,
+
 	Semicolon
 }
 }

@@ -14,17 +14,80 @@ namespace SqlessCompiler
 
 			string source = @"
 
-import Energy;
 
-using OGPA = dbo.OilGasProductionArea;
-using OGPA_OGW = Energy.dbo.OilGasProductionArea_OilGasWell;
+var i = 0;
 
-var permianId = 43;
+import Script;
 
-SELECT * without (Geography)
+//null coalesce
+[val] ?? [val2] ?? [val3]
+
+col1 ?= col2
+col1 ?!= col2
+
+&&
+||
+!
+
+
+//
+--
+/*
+*/
+
+var x = 0;
+var s = 'variable x has a value of ' + x;
+
+
+using SEC = dbo.ScenarioExecutionConfiguration;
+using OGPA = Energy.dbo.OilGasProductionArea;
+
+
+def #tempTable (
+	Id int,
+	Value string?[140],
+	IsEnabled bool
+);
+
+def #tempTable (
+	Id int,
+	Value string?[140],
+	IsEnabled bool
+) drop existing; //drops if it already exists
+
+def @tableVariable (
+	
+	Id int,
+	Value nstring[140],
+	IsEnabled bool?,
+	BigValue string, //assumes varchar(max)
+	BigNValue nstring, //assumes nvarchar(max)
+	FirstLetter char, //assumes char(1)
+	ValueAsCharArray char[10], //assumes char(10)
+);
+
+
+using(#tempTable)
+{
+	
+	//drops temp table at end
+}
+
+
+while(condition)
+{
+	
+	break/continue;
+}
+
+
+SELECT * WITHOUT(Geography), COUNT(OGW.Id)
 FROM OGPA
-	JOIN OGPA_OGW
-WHERE OPGA.Id = permianId
+	JOIN OilGasWellPRoductionArea_OilGasWell OGW
+WHERE OGPA.Id == i
+
+
+
 
 ";
 
@@ -32,7 +95,7 @@ WHERE OPGA.Id = permianId
 
 			var result = sqlssCompiler.Compile(source);
 
-			Console.WriteLine(result);
+			//Console.WriteLine(result);
 			Console.ReadLine();
 		}
 	}
