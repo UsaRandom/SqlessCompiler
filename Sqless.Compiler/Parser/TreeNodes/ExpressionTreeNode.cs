@@ -14,14 +14,12 @@ namespace Sqless.Compiler.Parser.TreeNodes
 			: base(stream, symbolTable)
 		{
 
-
-			var hasStartParenthesis = false;
-
+		
 			if (stream.Current.Type == TokenType.LeftParenthesis)
 			{
 				stream.Read();
 				LeftHandSide = new ExpressionTreeNode(stream, symbolTable);
-				hasStartParenthesis = true;
+				WrappedInParenthesis = true;
 				stream.Read();
 			}
 			else if (stream.Current.Type == TokenType.Identifier)
@@ -43,6 +41,10 @@ namespace Sqless.Compiler.Parser.TreeNodes
 				case TokenType.Minus:
 				case TokenType.Asterisk:
 				case TokenType.Divide:
+				case TokenType.And:
+				case TokenType.Or:
+				case TokenType.Equals:
+				case TokenType.DoubleEquals:
 					nextTokenIsOperator = true;
 					break;
 			}
@@ -52,17 +54,17 @@ namespace Sqless.Compiler.Parser.TreeNodes
 				Operator = new OperatorTreeNode(stream, symbolTable);
 
 
-				if (hasStartParenthesis && stream.Current.Type == TokenType.RightParenthesis)
+				if (WrappedInParenthesis && stream.Current.Type == TokenType.RightParenthesis)
 				{
 					RightHandSide = new ExpressionTreeNode(stream, symbolTable);
 				}
 				else if (stream.Current.Type == TokenType.Identifier)
 				{
-					RightHandSide = new IdentifierTreeNode(stream, symbolTable);
+					RightHandSide = new ExpressionTreeNode(stream, symbolTable);
 				}
 				else
 				{
-					RightHandSide = new LiteralTreeNode(stream, symbolTable);
+					RightHandSide = new ExpressionTreeNode(stream, symbolTable);
 				}
 			}
 
@@ -78,7 +80,15 @@ namespace Sqless.Compiler.Parser.TreeNodes
 
 			if (LeftHandSide is ExpressionTreeNode)
 			{
-				lhsText = $"({lhsText})";
+				if(((ExpressionTreeNode)LeftHandSide).WrappedInParenthesis)
+				{
+				
+					lhsText = $"({lhsText})";
+				}
+				else
+				{
+					lhsText = $"{lhsText}";
+				}
 			}
 
 			if (RightHandSide != null && Operator != null)
@@ -87,14 +97,34 @@ namespace Sqless.Compiler.Parser.TreeNodes
 				
 				if (RightHandSide is ExpressionTreeNode)
 				{
-					rhsText = $"({rhsText})";
+					if(((ExpressionTreeNode)RightHandSide).WrappedInParenthesis)
+					{
+				
+						rhsText = $"({rhsText})";
+					}
+					else
+					{
+						rhsText = $"{rhsText}";
+					}
 				}
 
-				return string.Format("{0} {1} {2}", lhsText, Operator.GetMSSqlText(), rhsText);
+				if(Operator.Type == TokenType.Equals)
+				{
+					
+					return string.Format("SET {0} {1} {2};", lhsText, Operator.GetMSSqlText(), rhsText);
+				}
+				else
+				{
+				
+					return string.Format("{0} {1} {2}", lhsText, Operator.GetMSSqlText(), rhsText);
+				}
+
 
 			}
 			return string.Format("{0}", lhsText);
 		}
+
+		public Boolean WrappedInParenthesis = false;
 
 		AbstractSyntaxTreeNode LeftHandSide = null;
 		AbstractSyntaxTreeNode Operator = null;

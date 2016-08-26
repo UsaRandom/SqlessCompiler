@@ -21,7 +21,19 @@ namespace Sqless.Compiler.Parser.TreeNodes
 		
 		public override string GetMSSqlText()
 		{
-			return m_operator;
+			switch(Type)
+			{
+				case TokenType.And:
+					return "AND";
+				case TokenType.Or:
+					return "OR";
+				case TokenType.DoubleEquals:
+					return "=";
+				default:
+					return m_operator;
+
+			}
+			
 		}
 
 		private string m_operator;

@@ -116,7 +116,9 @@ class SqlessLexerLibrary : ILexerLibrary
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Minus, "-"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Divide, "\\\\"));
 
+		lexerDefinitions.Add(new LexerDefinition(TokenType.DoubleEquals, "=="));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Equals, "="));
+
 
 		lexerDefinitions.Add(new LexerDefinition(TokenType.And, "and|&&"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Or, "or|\\|\\|"));

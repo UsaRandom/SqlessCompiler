@@ -24,9 +24,9 @@ public class SqlessCompiler
 		ILexer lexer;
 		ISymbolTable symbolTable;
 		
-		context = new TSqlDatabaseContext("Data Source=MARTIN-HOME\\SQLSERVER;Initial Catalog=Astrid;Integrated Security=True;");
+		context = new TSqlDatabaseContext("Data Source=SqlServerEnergy;Initial Catalog=Energy;Integrated Security=True;");
 
-		ISqlDatabaseMeta databaseMeta = context.GetDatabaseMeta("Astrid");
+		ISqlDatabaseMeta databaseMeta = context.GetDatabaseMeta("Energy");
 			
 			
 		var cache = new SqlServerGlobalScriptCache();

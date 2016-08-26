@@ -14,3 +14,11 @@ C:\Users\marti\Desktop\SqlessCompiler\bin\Debug\SqlessCompiler.pdb
 C:\Users\marti\Desktop\SqlessCompiler\bin\Debug\Sqless.Compiler.dll
 C:\Users\marti\Desktop\SqlessCompiler\bin\Debug\Sqless.Compiler.pdb
 C:\Users\marti\Desktop\SqlessCompiler\obj\Debug\Sqless.csprojResolveAssemblyReference.cache
+D:\SqlessCompiler\bin\Debug\SqlessCompiler.exe.config
+D:\SqlessCompiler\obj\Debug\SqlessCompiler.exe
+D:\SqlessCompiler\obj\Debug\SqlessCompiler.pdb
+D:\SqlessCompiler\bin\Debug\SqlessCompiler.exe
+D:\SqlessCompiler\bin\Debug\SqlessCompiler.pdb
+D:\SqlessCompiler\bin\Debug\Sqless.Compiler.dll
+D:\SqlessCompiler\bin\Debug\Sqless.Compiler.pdb
+D:\SqlessCompiler\obj\Debug\Sqless.csprojResolveAssemblyReference.cache

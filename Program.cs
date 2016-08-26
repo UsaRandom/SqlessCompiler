@@ -11,34 +11,42 @@ namespace SqlessCompiler
 {
 	class Program
 	{
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="args">
+		/// 
+		///  "InputFile" "OutputFile"
+		/// 
+		/// </param>
+
 		static void Main(string[] args)
 		{
+			if(args.Length != 2)
+				return;
+			
+			var inputFile = args[0];
+			var outputFile = args[1];
 
-			string source = @"
-
-var intTest = 532;
-
-var expressionTest = (2-1)+-1;
-
-var floatTest = 3.2;
-
-var doubleTest = 25215.0352d;
-
-SELECT *, (2+1),2,63,intTest
-FROM dbo.OilGasWell
+			
 
 
-//null coalesce
-//SELECT [val] ?? [val2] ?? [val3] ?? i
-//FROM Object
+			if(!File.Exists(inputFile))
+				throw new Exception(inputFile + " was not found.");
+			if(!File.Exists(outputFile))
+				throw new Exception(outputFile + " was not found.");
+				
+		    if(!Directory.Exists(Path.GetDirectoryName(outputFile)))
+			{
+				Directory.CreateDirectory(Path.GetDirectoryName(outputFile));
+			}
 
-//SELECT * WITHOUT(Geography), COUNT(OGW.Id)
-//FROM OGPA
-//	JOIN OilGasWellPRoductionArea_OilGasWell OGW
-//WHERE OGPA.Id = i
-";
-		    Environment.CurrentDirectory = "C:/users/marti/Desktop/SqlessWorkspace/";
-			source = File.ReadAllText("C:/users/marti/Desktop/SqlessWorkspace/Sqless.sql");
+
+		    Environment.CurrentDirectory = Path.GetDirectoryName(inputFile);
+
+			var source = File.ReadAllText(inputFile);
+
 			if (source != string.Empty)
 			{
 				
@@ -50,22 +58,13 @@ FROM dbo.OilGasWell
 				var result = sqlssCompiler.TranspileToMSSql(source);
 
 				stopWatch.Stop();
-
-				Console.ForegroundColor = ConsoleColor.Green;
-			
-				Console.WriteLine("Transpiled in: " + stopWatch.Elapsed);
-
-				Console.ForegroundColor = ConsoleColor.Gray;
-			
-
-				Console.WriteLine(result);
-
-				File.WriteAllText("C:/users/marti/Desktop/SqlessWorkspace/TSqlResult.sql", result);
+				
+				File.WriteAllText(outputFile, result);
 			}
 			else
 			{
 				
-				File.WriteAllText("C:/users/marti/Desktop/SqlessWorkspace/TSqlResult.sql", string.Empty);
+				File.WriteAllText(outputFile, string.Empty);
 			}
 	
 

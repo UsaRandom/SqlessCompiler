@@ -104,6 +104,10 @@ public enum TokenType
 	Minus,
 	Divide,
 	
+	//equality
+	DoubleEquals,
+
+	//assignment
 	Equals,
 
 

@@ -52,10 +52,32 @@ namespace Sqless.Compiler.Parser.TreeNodes
 																	|| tokenStream.Current.Type == TokenType.NewLine));
 
 
+			while(tokenStream.Current.Type == TokenType.NewLine)
+			{
+				m_children.Add(new NewLineTreeNode(tokenStream, SymbolTable));
+			}
+
 			if (tokenStream.Current.Type == TokenType.From)
 			{
 				FromNode = new FromTreeNode(tokenStream, symbolTable);
 				FromNode.Parent = this;
+				m_children.Add(FromNode);
+			}
+			
+			
+
+			while(tokenStream.Current.Type == TokenType.NewLine)
+			{
+				m_children.Add(new NewLineTreeNode(tokenStream, SymbolTable));
+			}
+			
+
+
+			if (tokenStream.Current.Type == TokenType.Where)
+			{
+				WhereNode = new WhereTreeNode(tokenStream, symbolTable);
+				WhereNode.Parent = this;
+				m_children.Add(WhereNode);
 			}
 
 			foreach (var child in m_children)
@@ -95,13 +117,17 @@ namespace Sqless.Compiler.Parser.TreeNodes
 				}
 			}
 
-			if(FromNode != null)
-				sb.Append(FromNode.GetMSSqlText());
+			//if(FromNode != null)
+			//	sb.Append(FromNode.GetMSSqlText());
+
+			//if(WhereNode != null)
+			//	sb.Append(WhereNode.GetMSSqlText());
 
 			return sb.ToString();
 		}
 
 		public FromTreeNode FromNode;
+		public WhereTreeNode WhereNode;
 
 	}
 }

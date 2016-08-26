@@ -122,8 +122,8 @@
     <Compile Include="Text\ITextSpan.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DatabaseMeta\Format\" />
     <Folder Include="DatabaseMeta\Types\Spatial\" />
-    <Folder Include="Format\" />
     <Folder Include="Lexer\LexerLibrary\Sqless\" />
     <Folder Include="Log\Messages\Error\" />
     <Folder Include="Log\Messages\Warning\" />
