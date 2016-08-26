@@ -18,10 +18,7 @@ namespace Sqless.Compiler.Parser.TreeNodes
 
 			tokenStream.Read();
 
-
-			//TODO: do... While token == comma, parse column
-			//TODO: Check for a FROM.... parse from, else... continue...
-
+            
 
 			bool onFirstColumn = true;
 

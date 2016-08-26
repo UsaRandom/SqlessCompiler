@@ -37,7 +37,7 @@ FROM dbo.OilGasWell
 //	JOIN OilGasWellPRoductionArea_OilGasWell OGW
 //WHERE OGPA.Id = i
 ";
-
+		    Environment.CurrentDirectory = "C:/users/marti/Desktop/SqlessWorkspace/";
 			source = File.ReadAllText("C:/users/marti/Desktop/SqlessWorkspace/Sqless.sql");
 			if (source != string.Empty)
 			{

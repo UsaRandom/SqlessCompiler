@@ -14,15 +14,31 @@ namespace Sqless.Compiler.Parser.TreeNodes
 		public WithoutColumnTreeNode(IBufferedTokenStream stream, ISymbolTable symbolTable)
 			: base (stream, symbolTable)
 		{
+             m_columns= new List<string>();
 			Type = stream.Current.Type;
 			stream.Read();
 
-			stream.Read();
+		//	stream.Read();
+            
+			bool onFirstColumn = true;
 
-			m_column = stream.Current.Content;
+			do
+			{
+                
+				stream.Read();
+                    
+
+				if (stream.Current.Type != TokenType.RightParenthesis && stream.Current.Type != TokenType.NewLine && stream.Current.Type != TokenType.Comma)
+				{
+					m_columns.Add(stream.Current.Content);
+				}
+                
+
+			} while (stream.Current.Type != TokenType.RightParenthesis);
+
 
 			stream.Read();
-			stream.Read();
+		
 
 
 		}
@@ -38,22 +54,36 @@ namespace Sqless.Compiler.Parser.TreeNodes
 				var table = select.FromNode.Tables[0];
 				int maxColsPerRow = 6;
 				int colCount = 0;
+			    int columnIndex = 0;
 				foreach (var column in table.Columns)
 				{
-					if (column.Name.ToLower() != m_column.ToLower())
+				    columnIndex++;
+				    var columnMatchesAny = false;
+
+				    foreach (var hiddenColumn in m_columns)
+				    {
+				        
+					    if (column.Name.ToLower() == hiddenColumn.ToLower())
+					    {
+					        columnMatchesAny = true;
+					        break;
+					    }
+				    }
+
+					if (!columnMatchesAny)
 					{
 						colCount++;
 						builtText += column.Name + ", ";
 					}
 
-					if (colCount == maxColsPerRow)
+					if (colCount == maxColsPerRow && table.Columns.Count  != columnIndex)
 					{
 						builtText += "\n       ";
 						colCount = 0;
 					}
 				}
 
-				builtText = builtText.Substring(0, builtText.Length - 2);
+			    builtText = builtText.Remove(builtText.LastIndexOf(", "), 2);
 			}
 		}
 
@@ -67,8 +97,9 @@ namespace Sqless.Compiler.Parser.TreeNodes
 
 
 		private string builtText = "";
+        
 
-		private string m_column = "";
+	    private List<string> m_columns;
 
 	}
 }

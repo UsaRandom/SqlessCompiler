@@ -18,15 +18,20 @@ class SqlServerGlobalScriptCache : IGlobalScriptCache
 		scriptSource = "using WHATEVER = Test;";
 		return true;
 	}
-
-	public void Register(string fullyQualifiedName, string source, string compiledSql)
+        
+	public void Register(string fullyQualifiedName, string source,  bool overwrite = false)
 	{
 		throw new NotImplementedException();
 	}
 
-	public void Register(string fullyQualifiedName, string source, string compiledSql, bool overwrite)
-	{
-		throw new NotImplementedException();
-	}
+	//public void Register(string fullyQualifiedName, string source, string compiledSql)
+	//{
+	//	throw new NotImplementedException();
+	//}
+
+	//public void Register(string fullyQualifiedName, string source, string compiledSql, bool overwrite)
+	//{
+	//	throw new NotImplementedException();
+	//}
 }
 }
