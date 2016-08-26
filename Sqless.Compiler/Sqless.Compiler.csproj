@@ -81,12 +81,17 @@
     <Compile Include="GlobalScriptCache\SqlServerGlobalScriptCache.cs" />
     <Compile Include="Lexer\TokenTypeGroup.cs" />
     <Compile Include="Parser\AbstractSyntaxTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\AstriskTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\CommaTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\DotTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\NewLineTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\CommentTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\ExpressionTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\IdentifierTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\LiteralTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\OperatorTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\FromTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\SelectColumnTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\SelectTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\VariableDeclarationTreeNode.cs" />
     <Compile Include="SqlessCompiler.cs" />

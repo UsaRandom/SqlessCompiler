@@ -33,6 +33,8 @@ enum SymbolType
 	NullableBool,
 	TableVariable,
 	TempTable,
-	Alias
+	Alias,
+
+	Unknown
 }
 }

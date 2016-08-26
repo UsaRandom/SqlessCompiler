@@ -36,7 +36,7 @@ namespace Sqless.Compiler.Parser.TreeNodes
 
 		public override string GetMSSqlText()
 		{
-			return string.Format("DECLARE @{0} {1} = {2};\n", m_symbol.Name, GetMSSqlType(m_symbol.Type), RightHandSide.GetMSSqlText());
+			return string.Format("DECLARE @{0} {1} = {2};", m_symbol.Name, GetMSSqlType(m_symbol.Type), RightHandSide.GetMSSqlText());
 		}
 
 		private SymbolItem m_symbol;

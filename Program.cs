@@ -16,23 +16,31 @@ namespace SqlessCompiler
 
 
 
-var intTest = 532;
+				var intTest = 532;
 
-var expressionTest = (2-1)+-1;
+				var expressionTest = (2-1)+-1;
 
-var floatTest = 3.2
+				var floatTest = 3.2;
 
-var doubleTest = 25215.0352d
+				var doubleTest = 25215.0352d;
+
+				SELECT *, (2+1),2,63,intTest
+				FROM dbo.OilGasWell
 
 
-//null coalesce
-//SELECT [val] ?? [val2] ?? [val3] ?? i
-//FROM Object
+				//null coalesce
+				//SELECT [val] ?? [val2] ?? [val3] ?? i
+				//FROM Object
 
-//SELECT * WITHOUT(Geography), COUNT(OGW.Id)
-//FROM OGPA
-//	JOIN OilGasWellPRoductionArea_OilGasWell OGW
-//WHERE OGPA.Id = i
+				//SELECT * WITHOUT(Geography), COUNT(OGW.Id)
+				//FROM OGPA
+				//	JOIN OilGasWellPRoductionArea_OilGasWell OGW
+				//WHERE OGPA.Id = i
+
+
+
+
+
 ";
 
 			var sqlssCompiler = new Sqless.Compiler.SqlessCompiler();

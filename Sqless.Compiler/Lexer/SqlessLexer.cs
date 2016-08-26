@@ -57,7 +57,7 @@ class SqlessLexer : ILexer
 			if (matchedTokenMatrix.Count == 0)
 			{
 				//no tokens on this line
-				yield return new Token(TokenType.NewLine, "\n", currentSourceIndex);
+			yield return new Token(TokenType.NewLine, "\n", currentSourceIndex);
 				continue;
 			}
 
@@ -77,6 +77,7 @@ class SqlessLexer : ILexer
 			}
 
 			currentSourceIndex += line.Length + 1; //length of line, plus new line
+			yield return new Token(TokenType.NewLine, "\n", currentSourceIndex);
 		}
 	}
 

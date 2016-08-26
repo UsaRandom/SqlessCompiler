@@ -126,6 +126,9 @@ public enum TokenType
 	Go,
 	NewLine,
 
-	Semicolon
+	Semicolon,
+
+
+	Unknown
 }
 }

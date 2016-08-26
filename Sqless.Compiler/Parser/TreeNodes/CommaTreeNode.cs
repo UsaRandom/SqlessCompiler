@@ -10,26 +10,20 @@ using Sqless.Compiler.Symbol;
 
 namespace Sqless.Compiler.Parser.TreeNodes
 {
-	class CommentTreeNode : AbstractSyntaxTreeNode
+	class CommaTreeNode : AbstractSyntaxTreeNode
 	{
-		public CommentTreeNode(IBufferedTokenStream stream, ISymbolTable symbolTable)
+		public CommaTreeNode(IBufferedTokenStream stream, ISymbolTable symbolTable)
 			: base (stream, symbolTable)
 		{
 			Type = stream.Current.Type;
-			m_comment = stream.Current.Content;
 			stream.Read();
 		}
 		
 		public override string GetMSSqlText()
 		{
-			Regex r = new Regex("//(.+)");
-			
-			var match = r.Match(m_comment);
-
-			return string.Format("-- {0}",match.Groups[1].Value.Replace("\r", string.Empty).Replace("\n", string.Empty));
+			return ",";
 		}
-
-		private string m_comment;
+		
 
 	}
 }

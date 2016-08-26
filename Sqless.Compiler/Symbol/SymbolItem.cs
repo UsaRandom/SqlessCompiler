@@ -24,6 +24,10 @@ namespace Sqless.Compiler.Symbol
 				case TokenType.DoubleLiteral:
 					this.Type = SymbolType.Double;
 					break;
+
+				case TokenType.Unknown:
+					this.Type = SymbolType.Unknown;
+					break;
 				default:
 					throw new Exception("Not a valid Type");
 			}

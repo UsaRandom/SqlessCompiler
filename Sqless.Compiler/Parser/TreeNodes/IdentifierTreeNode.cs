@@ -14,13 +14,36 @@ namespace Sqless.Compiler.Parser.TreeNodes
 		public IdentifierTreeNode(IBufferedTokenStream stream, ISymbolTable symbolTable)
 			: base (stream, symbolTable)
 		{
+
+			//IDENTIFIER = { IDENTIFIER | [IDENTIFIER] DOT [IDENTIFIER] | [IDENTIFIER] DOT IDENTIFIER | IDENTIFIER DOT [IDENTIFIER] }
+
 			Type = stream.Current.Type;
 			SymbolItem symbol = null;
 
 
-			if (!SymbolTable.TryGetSymbol(stream.Current.Content, out symbol))
+			//get fully qualified name...
+
+			string name = stream.Current.Content;
+
+			while (stream.Peek(1).Type == TokenType.Dot)
 			{
-				symbol = new SymbolItem(stream.Current.Content, stream.Current.Type);
+				stream.Read();
+				stream.Read();
+
+				name += "." + stream.Current.Content;
+			}
+
+
+			if (!SymbolTable.TryGetSymbol(name, out symbol))
+			{
+				if (Type != TokenType.Identifier)
+				{
+					symbol = new SymbolItem(name, Type);
+				}
+				else
+				{
+					symbol = new SymbolItem(name, TokenType.Unknown);
+				}
 				SymbolTable.Add(symbol);
 			}
 
@@ -31,7 +54,13 @@ namespace Sqless.Compiler.Parser.TreeNodes
 		
 		public override string GetMSSqlText()
 		{
-			return string.Format("@{0}", Symbol.Name);
+			switch (Symbol.Type)
+			{
+				case SymbolType.Unknown:
+					return Symbol.Name;
+				default:
+					return $"@{Symbol.Name}";
+			}
 		}
 
 

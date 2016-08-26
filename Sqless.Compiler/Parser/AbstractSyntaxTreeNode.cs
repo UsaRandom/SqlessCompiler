@@ -40,6 +40,10 @@ namespace Sqless.Compiler.Parser
 						childStatement = new NewLineTreeNode(m_tokenStream, SymbolTable);
 						m_children.Add(childStatement);
 						break;
+					case TokenType.Select:
+						childStatement = new SelectTreeNode(m_tokenStream, SymbolTable);
+						m_children.Add(childStatement);
+						break;
 					default:
 						Console.WriteLine("Unmatched Token of type {0}\n \t\tat line {1}", m_tokenStream.Current.Type, m_tokenStream.Current.LineNumber);
 						m_tokenStream.Read();
@@ -107,6 +111,6 @@ namespace Sqless.Compiler.Parser
 		}
 
 		protected IBufferedTokenStream m_tokenStream;
-		private IList<AbstractSyntaxTreeNode> m_children;
+		protected IList<AbstractSyntaxTreeNode> m_children;
 	}
 }
