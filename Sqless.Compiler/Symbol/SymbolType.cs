@@ -35,6 +35,10 @@ enum SymbolType
 	TempTable,
 	Alias,
 
-	Unknown
+	Unknown,
+
+	Schema,
+	Table,
+	Column
 }
 }

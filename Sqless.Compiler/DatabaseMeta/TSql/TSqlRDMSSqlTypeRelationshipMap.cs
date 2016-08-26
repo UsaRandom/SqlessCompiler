@@ -14,7 +14,7 @@ class TSqlRDMSSqlTypeRelationshipMap : IRDMSSqlTypeRelationshipMap
 	{
 		if(string.IsNullOrWhiteSpace(typeName))
 			throw new Exception("Type name cannot be null or whitespace");
-
+;
 		switch(typeName.ToLower())
 		{
 			case "tinyint":
@@ -25,12 +25,16 @@ class TSqlRDMSSqlTypeRelationshipMap : IRDMSSqlTypeRelationshipMap
 				return new Int32SqlDataType(isNullable);
 			case "bigint":
 				return new Int64SqlDataType(isNullable);
+			case "date":
+				return new DateSqlDataType(isNullable);
 
 			case "char":
 				return new CharSqlDataType(isNullable) { Length = length };
 			case "varchar":
 				return new VarCharSqlDataType(isNullable) { Length = length };
-
+					
+			case "bit":
+				return new BooleanSqlDataType(isNullable);
 
 			//see: https://msdn.microsoft.com/en-us/library/ms173773.aspx
 			case "real":
@@ -38,7 +42,7 @@ class TSqlRDMSSqlTypeRelationshipMap : IRDMSSqlTypeRelationshipMap
 			case "float":
 				return new DoubleSqlDataType(isNullable);
 			default:
-				return new UnknownSqlDataType(isNullable);
+				return new UnknownSqlDataType(typeName.ToLower(),isNullable);
 		}
 	}
 

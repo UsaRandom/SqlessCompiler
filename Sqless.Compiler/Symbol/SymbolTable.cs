@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using Sqless.Compiler.DatabaseMeta;
+using Sqless.Compiler.Log;
 
 namespace Sqless.Compiler.Symbol
 {
 	class SymbolTable : ISymbolTable
 	{
-		public SymbolTable()
+		public SymbolTable(ICompilerLog log)
 		{
+			m_log = log;
+
 			m_scopeTable = new List<Dictionary<string, SymbolItem>>();
 
 			m_currentScopeTable = new Dictionary<string, SymbolItem>();
@@ -24,10 +29,44 @@ namespace Sqless.Compiler.Symbol
 			m_currentScopeTable.Add(symbolItem.Name, symbolItem);
 		}
 
+
+		public void AddDatabaseMeta(ISqlDatabaseMeta databaseMeta)
+		{
+			foreach (var schema in databaseMeta.Schemas)
+			{
+				this.Add(new SymbolItem(schema.Name, SymbolType.Schema));
+
+				foreach (var table in schema.Tables)
+				{
+					this.Add(new SymbolItem(schema.Name+"."+table.Name, SymbolType.Table));
+
+					foreach (var column in table.Columns)
+					{
+						this.Add(new SymbolItem(schema.Name+"."+table.Name+"."+column.Name, SymbolType.Column));
+					}
+				}
+
+			}
+		}
+
+
 		public int CurrentScopeLevel()
 		{
 			return m_scopeLevel;
 		}
+
+
+		public void SetDefaultSchema(string schema)
+		{
+			m_defaultSchema = schema;
+		}
+		
+
+
+
+
+
+
 		
 		public bool HasSymbol(string name)
 		{
@@ -71,6 +110,9 @@ namespace Sqless.Compiler.Symbol
 		private Dictionary<string, SymbolItem> m_currentScopeTable;
 		private List<Dictionary<string, SymbolItem>> m_scopeTable;
 		private int m_scopeLevel = 0;
-		
+
+
+		private string m_defaultSchema = "dbo";
+		private ICompilerLog m_log;
 	}
 }

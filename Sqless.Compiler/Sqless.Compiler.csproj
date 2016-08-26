@@ -49,6 +49,7 @@
     <Compile Include="DatabaseMeta\SqlSchemaMeta.cs" />
     <Compile Include="DatabaseMeta\SqlTableMeta.cs" />
     <Compile Include="DatabaseMeta\TSql\TSqlRDMSSqlTypeRelationshipMap.cs" />
+    <Compile Include="DatabaseMeta\Types\Binary\BooleanSqlDataType.cs" />
     <Compile Include="DatabaseMeta\Types\Character\VarCharSqlDataType.cs" />
     <Compile Include="DatabaseMeta\Types\Character\CharSqlDataType.cs" />
     <Compile Include="DatabaseMeta\Types\DateAndTime\DateTimeSqlDataType.cs" />
@@ -119,14 +120,11 @@
     <Compile Include="Text\ITextSpan.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DatabaseMeta\Types\Binary\" />
     <Folder Include="DatabaseMeta\Types\Spatial\" />
     <Folder Include="Format\" />
     <Folder Include="Lexer\LexerLibrary\Sqless\" />
     <Folder Include="Log\Messages\Error\" />
     <Folder Include="Log\Messages\Warning\" />
-    <Folder Include="Parser\Automata\NonTerminal\" />
-    <Folder Include="Parser\Automata\Terminal\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Parser\Grammar\SqlessGrammarDefinition.ebnf" />

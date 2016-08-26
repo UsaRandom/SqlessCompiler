@@ -22,39 +22,33 @@ public class SqlessCompiler
 		ICompilerLog log;
 		IDatabaseContext context;
 		ILexer lexer;
+		ISymbolTable symbolTable;
+		
+		context = new TSqlDatabaseContext("Data Source=MARTIN-HOME\\SQLSERVER;Initial Catalog=Astrid;Integrated Security=True;");
 
-		/*
-		context = new TSqlDatabaseContext("Data Source=localhost;Initial Catalog=CrudeFlow;Integrated Security=True;");
-
-		ISqlDatabaseMeta databaseMeta = context.GetDatabaseMeta("CrudeFlow");
-
-
-		foreach (var table in databaseMeta.Tables)
-		{
-			Console.WriteLine(table.Name);
-			foreach (var column in table.Columns)
-			{
-				Console.WriteLine("    " + column.Name + " " + column.SqlDataType.TypeName);
-			}
-		}
-			*/
+		ISqlDatabaseMeta databaseMeta = context.GetDatabaseMeta("Astrid");
+			
+			
 		var cache = new SqlServerGlobalScriptCache();
 
 		log = new CompilerLog();
 
 		log.AddObserver(new StandardCompilerObserver());
 		//log.AddObserver(new VerboseCompilerObserver());
+		
+		symbolTable = new SymbolTable(log);
 
+		symbolTable.AddDatabaseMeta(databaseMeta);
+		
 		lexer = new SqlessLexer(log);
 
 		source = PreProcess(cache, log, lexer, source);
 
 
-		lexer = new SqlessLexer(log);
+	//	lexer = new SqlessLexer(log);
 		IBufferedTokenStream tokenStream = new BufferedTokenStream(lexer.Tokenize(source));
 
 
-		var symbolTable = new SymbolTable();
 
 		//while(tokenStream.Read())
 		//{

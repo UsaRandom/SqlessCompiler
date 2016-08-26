@@ -11,6 +11,18 @@ namespace Sqless.Compiler.Symbol
 	class SymbolItem
 	{
 
+		public SymbolItem(string name, SymbolType type)
+		{
+			this.Name = name;
+			this.Type = type;
+		}
+
+		public SymbolItem(string name, SymbolType type, object data)
+		{
+			this.Name = name;
+			this.Type = type;
+		}
+
 		public SymbolItem(string name, TokenType type)
 		{
 			switch (type)
