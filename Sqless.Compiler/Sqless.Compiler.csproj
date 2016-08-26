@@ -83,6 +83,7 @@
     <Compile Include="Lexer\TokenTypeGroup.cs" />
     <Compile Include="Parser\AbstractSyntaxTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\AstriskTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\WithoutColumnTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\CommaTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\DotTreeNode.cs" />
     <Compile Include="Parser\TreeNodes\NewLineTreeNode.cs" />

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,24 +38,37 @@ FROM dbo.OilGasWell
 //WHERE OGPA.Id = i
 ";
 
-			var sqlssCompiler = new Sqless.Compiler.SqlessCompiler();
-			var stopWatch = new Stopwatch();
+			source = File.ReadAllText("C:/users/marti/Desktop/SqlessWorkspace/Sqless.sql");
+			if (source != string.Empty)
+			{
+				
+				var sqlssCompiler = new Sqless.Compiler.SqlessCompiler();
+				var stopWatch = new Stopwatch();
 
-			stopWatch.Start();
+				stopWatch.Start();
 
-			var result = sqlssCompiler.TranspileToMSSql(source);
+				var result = sqlssCompiler.TranspileToMSSql(source);
 
-			stopWatch.Stop();
+				stopWatch.Stop();
 
-			Console.ForegroundColor = ConsoleColor.Green;
+				Console.ForegroundColor = ConsoleColor.Green;
 			
-			Console.WriteLine("Transpiled in: " + stopWatch.Elapsed);
+				Console.WriteLine("Transpiled in: " + stopWatch.Elapsed);
 
-			Console.ForegroundColor = ConsoleColor.Gray;
+				Console.ForegroundColor = ConsoleColor.Gray;
 			
 
-			Console.WriteLine(result);
-			Console.ReadLine();
+				Console.WriteLine(result);
+
+				File.WriteAllText("C:/users/marti/Desktop/SqlessWorkspace/TSqlResult.sql", result);
+			}
+			else
+			{
+				
+				File.WriteAllText("C:/users/marti/Desktop/SqlessWorkspace/TSqlResult.sql", string.Empty);
+			}
+	
+
 		}
 	}
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Sqless.Compiler.DatabaseMeta;
@@ -29,25 +30,71 @@ namespace Sqless.Compiler.Symbol
 			m_currentScopeTable.Add(symbolItem.Name, symbolItem);
 		}
 
-
-		public void AddDatabaseMeta(ISqlDatabaseMeta databaseMeta)
+		public ISqlDatabaseMeta DatabaseMeta
 		{
-			foreach (var schema in databaseMeta.Schemas)
-			{
-				this.Add(new SymbolItem(schema.Name, SymbolType.Schema));
-
-				foreach (var table in schema.Tables)
-				{
-					this.Add(new SymbolItem(schema.Name+"."+table.Name, SymbolType.Table));
-
-					foreach (var column in table.Columns)
-					{
-						this.Add(new SymbolItem(schema.Name+"."+table.Name+"."+column.Name, SymbolType.Column));
-					}
-				}
-
-			}
+			get;
+			set;
 		}
+
+
+
+		public ISqlTableMeta GetTableMetaByName(string name)
+		{
+			if (!name.Contains("."))
+			{
+				name = this.m_defaultSchema + "." + name;
+			}
+
+			name = name.ToLower();
+
+			foreach (var table in DatabaseMeta.Tables)
+			{
+				if (table.FullName.ToLower() == name)
+				{
+					return table;
+				}
+			}
+			return null;
+		}
+
+		public void AddTable(string name)
+		{		
+			//	foreach (var schema in databaseMeta.Schemas)
+		//	{
+		//		this.Add(new SymbolItem(schema.Name, SymbolType.Schema));
+
+		//		foreach (var table in schema.Tables)
+		//		{
+		//			this.Add(new SymbolItem(schema.Name + "." + table.Name, SymbolType.Table));
+
+		//			foreach (var column in table.Columns)
+		//			{
+		//				this.Add(new SymbolItem(schema.Name + "." + table.Name + "." + column.Name, SymbolType.Column));
+		//			}
+		//		}
+
+		//	}
+			
+		}
+
+		//public void AddDatabaseMeta(ISqlDatabaseMeta databaseMeta)
+		//{
+		//	foreach (var schema in databaseMeta.Schemas)
+		//	{
+		//		this.Add(new SymbolItem(schema.Name, SymbolType.Schema));
+
+		//		foreach (var table in schema.Tables)
+		//		{
+		//			this.Add(new SymbolItem(schema.Name + "." + table.Name, SymbolType.Table));
+
+		//			foreach (var column in table.Columns)
+		//			{
+		//				this.Add(new SymbolItem(schema.Name + "." + table.Name + "." + column.Name, SymbolType.Column));
+		//			}
+		//		}
+
+		//	}
+		//}
 
 
 		public int CurrentScopeLevel()

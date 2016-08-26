@@ -53,6 +53,15 @@ namespace Sqless.Compiler.Parser
 		}
 
 
+		public virtual void Pass()
+		{
+			foreach (var child in m_children)
+			{
+				child.Pass();
+			}
+		}
+
+
 		public virtual string GetMSSqlText()
 		{
 			StringBuilder sb = new StringBuilder();
@@ -112,5 +121,7 @@ namespace Sqless.Compiler.Parser
 
 		protected IBufferedTokenStream m_tokenStream;
 		protected IList<AbstractSyntaxTreeNode> m_children;
+
+		internal AbstractSyntaxTreeNode Parent;
 	}
 }

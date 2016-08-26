@@ -13,6 +13,8 @@ interface ISqlTableMeta
 
 	string Name { get; }
 
+	string FullName { get; }
+
 	ISqlDatabaseMeta DatabaseMeta { get; }
 
 	ISqlSchemaMeta SchemaMeta { get; }

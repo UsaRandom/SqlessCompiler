@@ -27,10 +27,17 @@ namespace Sqless.Compiler.Parser.TreeNodes
 					Child = new ExpressionTreeNode(stream, symbolTable);
 					break;
 			}
-			
+
+			Child.Parent = this;
+
 		}
 		
-
+		
+		
+		public override void Pass()
+		{
+			Child.Pass();
+		}
 		
 		public override string GetMSSqlText()
 		{

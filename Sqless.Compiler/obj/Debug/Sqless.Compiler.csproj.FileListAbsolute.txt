@@ -7,4 +7,3 @@ C:\Users\marti\Desktop\SqlessCompiler\Sqless.Compiler\bin\Debug\Sqless.Compiler.
 C:\Users\marti\Desktop\SqlessCompiler\Sqless.Compiler\bin\Debug\Sqless.Compiler.pdb
 C:\Users\marti\Desktop\SqlessCompiler\Sqless.Compiler\obj\Debug\Sqless.Compiler.dll
 C:\Users\marti\Desktop\SqlessCompiler\Sqless.Compiler\obj\Debug\Sqless.Compiler.pdb
-C:\Users\marti\Desktop\SqlessCompiler\Sqless.Compiler\obj\Debug\Sqless.Compiler.csprojResolveAssemblyReference.cache

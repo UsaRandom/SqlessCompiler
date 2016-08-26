@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sqless.Compiler.DatabaseMeta;
 using Sqless.Compiler.Lexer;
 using Sqless.Compiler.Symbol;
 
@@ -13,16 +14,22 @@ namespace Sqless.Compiler.Parser.TreeNodes
 		public FromTreeNode(IBufferedTokenStream tokenStream, ISymbolTable symbolTable)
 			: base(tokenStream, symbolTable)
 		{
-			
+			Tables = new List<ISqlTableMeta>();
 			//FROM = FROM { ALIAS | IDENTIFIER }
 
 			tokenStream.Read();
 
-			m_children.Add(new IdentifierTreeNode(tokenStream, symbolTable));
-			
+			m_children.Add(IdentNode = new IdentifierTreeNode(tokenStream, symbolTable));
+
+			var table = symbolTable.GetTableMetaByName(IdentNode.Symbol.Name);
+
+			if (table != null)
+			{
+				Tables.Add(table);
+			}
 		}
 
-
+		public IList<ISqlTableMeta> Tables;
 		
 		public override string GetMSSqlText()
 		{
@@ -38,5 +45,7 @@ namespace Sqless.Compiler.Parser.TreeNodes
 			return sb.ToString();
 		}
 
+
+		IdentifierTreeNode IdentNode = null;
 	}
 }

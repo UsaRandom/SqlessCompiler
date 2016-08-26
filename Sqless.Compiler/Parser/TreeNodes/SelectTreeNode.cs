@@ -58,12 +58,30 @@ namespace Sqless.Compiler.Parser.TreeNodes
 			if (tokenStream.Current.Type == TokenType.From)
 			{
 				FromNode = new FromTreeNode(tokenStream, symbolTable);
+				FromNode.Parent = this;
+			}
+
+			foreach (var child in m_children)
+			{
+				child.Parent = this;
 			}
 
 
 		}
 
+
+		public override void Pass()
+		{
+			if (FromNode != null)
+				FromNode.Pass();
+
+			foreach (var child in m_children)
+			{
+				child.Pass();
+			}
+		}
 		
+
 		public override string GetMSSqlText()
 		{
 			StringBuilder sb = new StringBuilder();
@@ -86,7 +104,7 @@ namespace Sqless.Compiler.Parser.TreeNodes
 			return sb.ToString();
 		}
 
-		AbstractSyntaxTreeNode FromNode;
+		public FromTreeNode FromNode;
 
 	}
 }

@@ -19,12 +19,8 @@ namespace Sqless.Compiler.Parser.TreeNodes
 
 			if (stream.Current.Type == TokenType.Without)
 			{
-				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine("Not Supported: Without isn't supported just yet...");
-				Console.ForegroundColor = ConsoleColor.White;
-				stream.Read();
-				stream.Read();
-				stream.Read();
+				m_children.Add(new WithoutColumnTreeNode(stream, symbolTable));
+				m_children[0].Parent = this;
 			}
 
 		}
@@ -36,7 +32,10 @@ namespace Sqless.Compiler.Parser.TreeNodes
 		
 		public override string GetMSSqlText()
 		{
-			return "*";
+			if(m_children.Count == 0)
+				return "*";
+
+			return m_children[0].GetMSSqlText();
 		}
 
 		

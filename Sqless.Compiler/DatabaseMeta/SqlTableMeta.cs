@@ -26,6 +26,11 @@ class SqlTableMeta : ISqlTableMeta
 		private set;
 	}
 
+	public string FullName
+	{
+		get { return this.SchemaMeta.Name + "." + Name; }
+	}
+
 	public ISqlDatabaseMeta DatabaseMeta
 	{
 		get;

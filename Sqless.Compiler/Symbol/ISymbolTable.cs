@@ -17,7 +17,10 @@ interface ISymbolTable
 	bool HasSymbol(string name);
 	bool HasSymbol(string name, SymbolType symbolType);
 
-	void AddDatabaseMeta(ISqlDatabaseMeta databaseMeta);
+
+	ISqlTableMeta GetTableMetaByName(string name);
+	
+	ISqlDatabaseMeta DatabaseMeta { get; set; }
 
 	void MoveScopeUp();
 

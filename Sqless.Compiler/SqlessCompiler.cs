@@ -38,7 +38,7 @@ public class SqlessCompiler
 		
 		symbolTable = new SymbolTable(log);
 
-		symbolTable.AddDatabaseMeta(databaseMeta);
+		symbolTable.DatabaseMeta = databaseMeta;
 		
 		lexer = new SqlessLexer(log);
 
@@ -58,7 +58,7 @@ public class SqlessCompiler
 		var sqlessParser = new AbstractSyntaxTreeNode(tokenStream, symbolTable);
 
 		sqlessParser.Parse();
-		
+		sqlessParser.Pass();
 
 		
 		
