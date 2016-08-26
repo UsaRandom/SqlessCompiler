@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sqless.Compiler.Parser
+namespace Sqless.Compiler.Lexer
 {
-interface IParseNode
-{
-}
+	enum TokenTypeGroup
+	{
+
+		Operator,
+		Literal,
+
+
+	}
 }

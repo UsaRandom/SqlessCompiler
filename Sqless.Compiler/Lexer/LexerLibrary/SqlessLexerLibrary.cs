@@ -17,9 +17,14 @@ class SqlessLexerLibrary : ILexerLibrary
 	static SqlessLexerLibrary()
 	{
 		lexerDefinitions = new List<LexerDefinition>();
+
+		lexerDefinitions.Add(new LexerDefinition(TokenType.NewLine, "\n"));
 		
+		lexerDefinitions.Add(new LexerDefinition(TokenType.Comment, "//.*"));
+
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Select, "(?i)select"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.From, "(?i)from"));
+		lexerDefinitions.Add(new LexerDefinition(TokenType.Join, "(?i)join"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Where, "(?i)where"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Left, "(?i)left"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Right, "(?i)right"));
@@ -42,10 +47,10 @@ class SqlessLexerLibrary : ILexerLibrary
 		lexerDefinitions.Add(new LexerDefinition(TokenType.NullableShort, "short\\?"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.NullableInt, "int\\?"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.NullableLong, "long\\?"));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.ByteLiteral, "[1-9][0-9].b"));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.ShortLiteral, "[1-9][0-9].s"));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.IntLiteral, "[1-9][0-9]."));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.LongLiteral, "[1-9][0-9].l"));
+		lexerDefinitions.Add(new LexerDefinition(TokenType.ByteLiteral, "[1-9][0-9]+b"));
+		lexerDefinitions.Add(new LexerDefinition(TokenType.ShortLiteral, "[1-9][0-9]+s"));
+		lexerDefinitions.Add(new LexerDefinition(TokenType.IntLiteral, "[0-9]+"));
+		lexerDefinitions.Add(new LexerDefinition(TokenType.LongLiteral, "[1-9][0-9]+l"));
 
 
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Float, "float"));
@@ -89,18 +94,22 @@ class SqlessLexerLibrary : ILexerLibrary
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Var, "var"));
 
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Def, "def"));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.TempTable, "(?i)#[a-z]+"));
-		lexerDefinitions.Add(new LexerDefinition(TokenType.TableVariable, "(?i)@[a-z]+"));
+		lexerDefinitions.Add(new LexerDefinition(TokenType.TempTable, "(?i)#[a-zA-Z_][a-zA-Z_0-9]*"));
+		lexerDefinitions.Add(new LexerDefinition(TokenType.TableVariable, "(?i)@[a-zA-Z_][a-zA-Z_0-9]*"));
+			
 
+
+
+		lexerDefinitions.Add(new LexerDefinition(TokenType.Identifier, @"(?i)[a-z_][a-z_0-9]*"));
 		
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Null, "null"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.NullCoalesce, "\\?\\?"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.NullEquality, "\\?="));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.NullNegatedEquality, "\\?!="));
 		
-		lexerDefinitions.Add(new LexerDefinition(TokenType.Identifier, @"(?i)[a-z_]+"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Dot, "\\."));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Comma, ","));
+			
 
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Asterisk, "\\*"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Plus, "\\+"));
@@ -122,6 +131,7 @@ class SqlessLexerLibrary : ILexerLibrary
 		lexerDefinitions.Add(new LexerDefinition(TokenType.LeftBracket, "\\["));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.RightBracket, "\\]"));
 
+		lexerDefinitions.Add(new LexerDefinition(TokenType.Go, "go"));
 		lexerDefinitions.Add(new LexerDefinition(TokenType.Semicolon, ";"));
 
 	}

@@ -15,87 +15,31 @@ namespace SqlessCompiler
 			string source = @"
 
 
-var i = 0;
 
-import Script;
+var intTest = 532;
+
+var expressionTest = (2-1)+-1;
+
+var floatTest = 3.2
+
+var doubleTest = 25215.0352d
+
 
 //null coalesce
-[val] ?? [val2] ?? [val3]
+//SELECT [val] ?? [val2] ?? [val3] ?? i
+//FROM Object
 
-col1 ?= col2
-col1 ?!= col2
-
-&&
-||
-!
-
-
-//
---
-/*
-*/
-
-var x = 0;
-var s = 'variable x has a value of ' + x;
-
-
-using SEC = dbo.ScenarioExecutionConfiguration;
-using OGPA = Energy.dbo.OilGasProductionArea;
-
-
-def #tempTable (
-	Id int,
-	Value string?[140],
-	IsEnabled bool
-);
-
-def #tempTable (
-	Id int,
-	Value string?[140],
-	IsEnabled bool
-) drop existing; //drops if it already exists
-
-def @tableVariable (
-	
-	Id int,
-	Value nstring[140],
-	IsEnabled bool?,
-	BigValue string, //assumes varchar(max)
-	BigNValue nstring, //assumes nvarchar(max)
-	FirstLetter char, //assumes char(1)
-	ValueAsCharArray char[10], //assumes char(10)
-);
-
-
-using(#tempTable)
-{
-	
-	//drops temp table at end
-}
-
-
-while(condition)
-{
-	
-	break/continue;
-}
-
-
-SELECT * WITHOUT(Geography), COUNT(OGW.Id)
-FROM OGPA
-	JOIN OilGasWellPRoductionArea_OilGasWell OGW
-WHERE OGPA.Id == i
-
-
-
-
+//SELECT * WITHOUT(Geography), COUNT(OGW.Id)
+//FROM OGPA
+//	JOIN OilGasWellPRoductionArea_OilGasWell OGW
+//WHERE OGPA.Id = i
 ";
 
 			var sqlssCompiler = new Sqless.Compiler.SqlessCompiler();
 
-			var result = sqlssCompiler.Compile(source);
+			var result = sqlssCompiler.TranspileToMSSql(source);
 
-			//Console.WriteLine(result);
+			Console.WriteLine(result);
 			Console.ReadLine();
 		}
 	}

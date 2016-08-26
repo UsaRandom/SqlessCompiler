@@ -33,9 +33,13 @@ class SqlessLexer : ILexer
 		for (var lineIndex = 0; lineIndex < sourceLines.Length; lineIndex++)
 		{
 			line = sourceLines[lineIndex];
-			
+
 			if (line == string.Empty)
+			{
+				
+				yield return new Token(TokenType.NewLine, "\n", currentSourceIndex);
 				continue;
+			}
 
 			matchedTokenMatrix = new List<IList<IToken>>();
 
@@ -53,6 +57,7 @@ class SqlessLexer : ILexer
 			if (matchedTokenMatrix.Count == 0)
 			{
 				//no tokens on this line
+				yield return new Token(TokenType.NewLine, "\n", currentSourceIndex);
 				continue;
 			}
 

@@ -79,13 +79,16 @@
     <Compile Include="Lexer\Token.cs" />
     <Compile Include="Lexer\TokenType.cs" />
     <Compile Include="GlobalScriptCache\SqlServerGlobalScriptCache.cs" />
-    <Compile Include="Parser\IParser.cs" />
-    <Compile Include="Parser\SqlessParser.cs" />
-    <Compile Include="Parser\SyntaxTree\Variable\AssignParseNode.cs" />
-    <Compile Include="Parser\SyntaxTree\Variable\DeclareParseNode.cs" />
-    <Compile Include="Parser\SyntaxTree\IParseNode.cs" />
-    <Compile Include="Parser\SyntaxTree\ISqlBatchParseTree.cs" />
-    <Compile Include="Parser\SyntaxTree\SqlBatchParseTree.cs" />
+    <Compile Include="Lexer\TokenTypeGroup.cs" />
+    <Compile Include="Parser\AbstractSyntaxTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\NewLineTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\CommentTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\ExpressionTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\IdentifierTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\LiteralTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\OperatorTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\SelectTreeNode.cs" />
+    <Compile Include="Parser\TreeNodes\VariableDeclarationTreeNode.cs" />
     <Compile Include="SqlessCompiler.cs" />
     <Compile Include="DatabaseMeta\ISqlDatabaseMeta.cs" />
     <Compile Include="DatabaseMeta\ISqlTableMeta.cs" />
@@ -101,7 +104,7 @@
     <Compile Include="PreProcessors\ImportPreProcessor.cs" />
     <Compile Include="PreProcessors\IPreProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Symbol\ISymbol.cs" />
+    <Compile Include="Symbol\SymbolItem.cs" />
     <Compile Include="Symbol\ISymbolTable.cs" />
     <Compile Include="Symbol\SymbolType.cs" />
     <Compile Include="Symbol\SymbolTable.cs" />
@@ -117,10 +120,8 @@
     <Folder Include="Lexer\LexerLibrary\Sqless\" />
     <Folder Include="Log\Messages\Error\" />
     <Folder Include="Log\Messages\Warning\" />
-    <Folder Include="Parser\SyntaxTree\Expressions\" />
-    <Folder Include="Parser\SyntaxTree\Operators\" />
-    <Folder Include="Parser\SyntaxTree\Scope\" />
-    <Folder Include="Parser\SyntaxTree\Symbols\" />
+    <Folder Include="Parser\Automata\NonTerminal\" />
+    <Folder Include="Parser\Automata\Terminal\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Parser\Grammar\SqlessGrammarDefinition.ebnf" />

@@ -11,6 +11,7 @@ public enum TokenType
 	
 	Select,
 	From,
+	Join,
 	Where,
 	Left,
 	Right,
@@ -92,7 +93,7 @@ public enum TokenType
 	NullEquality,
 	NullNegatedEquality,
 
-	//Symbol, represents tables, named variables, etc...
+	//SymbolItem, represents tables, named variables, etc...
 	Identifier,
 	Dot,
 	Comma,
@@ -118,6 +119,12 @@ public enum TokenType
 	RightCurlyBracket,
 	LeftBracket,
 	RightBracket,
+
+
+	Comment,
+
+	Go,
+	NewLine,
 
 	Semicolon
 }

@@ -9,11 +9,19 @@ namespace Sqless.Compiler.Symbol
 interface ISymbolTable
 {
 	
-	void Add(ISymbol symbol, int scopeDepth);
+	void Add(SymbolItem symbolItem);
 
-	bool TryGetSymbol(string name, int scopeDepth, out ISymbol symbol);
+	bool TryGetSymbol(string name, out SymbolItem symbolItem);
+		
+	bool HasSymbol(string name);
+	bool HasSymbol(string name, SymbolType symbolType);
 
-	bool HasSymbol(string name, int scopeDepth, out ISymbol symbol);
+
+	void MoveScopeUp();
+
+	void MoveScopeDown();
 	
+
+	int CurrentScopeLevel();
 }
 }
